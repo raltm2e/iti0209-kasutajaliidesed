@@ -1,7 +1,17 @@
-body {
+body, .navbar {
     background-color: #2F303A;
 }
 
-.navbar {
-    background-color: #2F303A;
+.btn {
+    background-color: #1762A7;
 }
+
+h1, h2, h3, a, p {
+    color: white;
+}
+
+.fill {
+    min-height: 100%;
+    height: 100%;
+}
+
