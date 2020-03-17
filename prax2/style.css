@@ -2,12 +2,6 @@ body {
     background-color: #2F303A;
 }
 
-/*.navbar .navbar-nav {*/
-/*    display: inline-block;*/
-/*    float: none;*/
-/*    vertical-align: top;*/
-/*}*/
-
-/*.navbar .navbar-collapse {*/
-/*    text-align: center;*/
-/*}*/
+.navbar {
+    background-color: #2F303A;
+}
