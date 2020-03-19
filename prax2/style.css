@@ -1,4 +1,4 @@
-body, .navbar {
+body, .navbar, table, thead, tbody {
     background-color: #2F303A;
 }
 
