@@ -22,6 +22,10 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-width: 0;
 }
 
+footer {
+    background-color: #202027;
+}
+
 .btn {
     margin-right: 50%;
 }
