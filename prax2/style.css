@@ -26,15 +26,32 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-width: 0;
 }
 
-footer {
-    background-color: #202027;
-    width: 100%;
-    position: relative;
-    margin-top: 0; /* negative value of footer height */
-    padding-top:20px;
-    margin-bottom: 0;
-}
 
 .btn {
     margin-right: 50%;
+}
+
+.row {
+    min-height:100%;
+    position:relative;
+}
+html {
+    height: 100%;
+}
+
+body {
+    padding-bottom: 30px;
+}
+
+.footer {
+    position:absolute;
+    background-color: #202027;
+    bottom: -200px;
+    left: 0;
+    width: 100%;
+}
+
+.footer-icon {
+    min-width: 10px;
+    max-width: 50px;
 }
