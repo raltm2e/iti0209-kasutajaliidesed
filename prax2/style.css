@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body, .navbar, table, thead, tbody {
     background-color: #2F303A;
 }
@@ -6,12 +10,12 @@ body {
     padding-bottom: 70px;
 }
 
-.btn {
-    background-color: #1762A7;
-}
-
 h1, h2, h3, h4, h5, h6, a, p {
     color: white;
+}
+
+.btn {
+    background-color: #1762A7;
 }
 
 .fill, .container {
@@ -26,7 +30,6 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-width: 0;
 }
 
-
 .btn {
     margin-right: 50%;
 }
@@ -34,13 +37,6 @@ h1, h2, h3, h4, h5, h6, a, p {
 .row {
     min-height:100%;
     position:relative;
-}
-html {
-    height: 100%;
-}
-
-body {
-    padding-bottom: 30px;
 }
 
 .footer {
