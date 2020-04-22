@@ -17,10 +17,10 @@
         </div>
         <div class="row mt-5">
             <div class="col-md d-none d-lg-block">
-                <img class="img-fluid" src="images/chevy_laguna.jpg" alt="">
+                <img class="img-fluid" src="../assets/images/chevy_laguna.jpg" alt="">
             </div>
             <div class="col-md d-none d-lg-block">
-                <img class="img-fluid" src="images/tuuning_garaaž.png" alt="" width="780">
+                <img class="img-fluid" src="../assets/images/tuuning_garaaž.png" alt="" width="780">
             </div>
         </div>
     </div>

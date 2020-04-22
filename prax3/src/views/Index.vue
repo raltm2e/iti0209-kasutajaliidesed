@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="row float-right mr-4 mt-3">
-                <a href="Broneeri.vue" class="btn btn-lg" role="button">Broneeri</a>
+                <router-link to="broneeri" class="btn btn-lg" role="button">Broneeri</router-link>
             </div>
         </div>
         <div class="media align-items-end">

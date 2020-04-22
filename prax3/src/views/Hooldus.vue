@@ -3,7 +3,7 @@
         <div class="row align-items-center" style="height: 100%">
             <div class="col-6 text-center d-none d-lg-block">
                 <h1>Hooldus</h1>
-                <img src="images/oil_icon.png" class="img-fluid" alt="" width="400">
+                <img src="../assets/images/oil_icon.png" class="img-fluid" alt="" width="400">
             </div>
             <div class="col">
                 <div class="row justify-content-center">
@@ -60,10 +60,10 @@
                                     </div>
                                     <div class="form-row" style="width: 100%">
                                         <div class="form-group m-auto">
-                                            <a href="broneeri.html" class="btn btn-lg">Tagasi</a>
+                                            <router-link to="/broneeri" class="btn btn-lg">Tagasi</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <a href="edukas.html" class="btn btn-lg">Kinnita</a>
+                                            <router-link to="/edukas" class="btn btn-lg">Kinnita</router-link>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>

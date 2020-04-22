@@ -5,6 +5,8 @@ import Broneeri from '../views/Broneeri.vue'
 import Remont from '../views/Remont.vue'
 import Hooldus from '../views/Hooldus.vue'
 import Edukas from '../views/Edukas.vue'
+import Hinnakiri from '../views/Hinnakiri.vue'
+import Eesm2rk from '../views/Eesm2rk.vue'
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,16 @@ Vue.use(VueRouter);
     path: '/edukas',
     name: 'Edukas',
     component: Edukas
+  },
+  {
+    path: '/hinnakiri',
+    name: 'Hinnakiri',
+    component: Hinnakiri
+  },
+  {
+    path: '/eesm2rk',
+    name: 'Eesm2rk',
+    component: Eesm2rk
   }
 ];
 

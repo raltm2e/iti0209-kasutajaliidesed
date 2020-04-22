@@ -49,10 +49,10 @@
                                     </div>
                                     <div class="form-row" style="width: 100%">
                                         <div class="form-group m-auto">
-                                            <a href="hooldus.html" class="btn btn-lg">Hooldusesse</a>
+                                            <router-link to="/hooldus" class="btn btn-lg">Hooldusesse</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <a href="remont.html" class="btn btn-lg">Remonti</a>
+                                            <router-link to="/remont" class="btn btn-lg">Remonti</router-link>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>
