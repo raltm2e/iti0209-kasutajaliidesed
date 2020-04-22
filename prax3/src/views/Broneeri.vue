@@ -30,18 +30,14 @@
                                         <label for="mootor">Mootor:</label>
                                         <select id="mootor" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>Bensiin</option>
-                                            <option>Diisel</option>
-                                            <option>Hübriid</option>
+                                            <option v-for="item in mootorid" :key="item.mootor">{{item.mootor}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="käigukast">Käigukast:</label>
                                         <select id="käigukast" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>Manuaal</option>
-                                            <option>Automaat</option>
-                                            <option>SMG</option>
+                                            <option v-for="item in k2igukastid" :key="item.k2igukast">{{item.k2igukast}}</option>
                                         </select>
                                     </div>
                                     <div class="form-row" style="width: 100%">
@@ -65,12 +61,16 @@
 <script>
     import margid from '../assets/json/automargid.json'
     import mudelid from '../assets/json/mudelid.json'
+    import mootorid from '../assets/json/mootorid.json'
+    import k2igukastid from '../assets/json/k2igukastid.json'
     export default {
         name: "Broneeri",
         data(){
-            return{
+            return {
                 margid: margid,
-                mudelid: mudelid
+                mudelid: mudelid,
+                mootorid: mootorid,
+                k2igukastid: k2igukastid
             }
         }
     }

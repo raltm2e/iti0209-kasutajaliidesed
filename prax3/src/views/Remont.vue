@@ -16,12 +16,7 @@
                                         <label for="töö">Vali töö:</label>
                                         <select id="töö" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>Mootoritöö</option>
-                                            <option>Keretöö</option>
-                                            <option>Elektritöö</option>
-                                            <option>Keevitus</option>
-                                            <option>Diagnostika</option>
-                                            <option>Ei tea</option>
+                                            <option v-for="item in remonditood" :key="item.too">{{item.too}}</option>
                                         </select>
                                     </div>
                                     <div class="form-row">
@@ -81,8 +76,14 @@
 </template>
 
 <script>
+    import remonditood from '../assets/json/remonditood.json'
     export default {
-        name: "Remont"
+        name: "Remont",
+        data(){
+            return {
+                remonditood: remonditood
+            }
+        }
     }
 
     function validateEmail(email) {

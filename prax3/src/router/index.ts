@@ -49,6 +49,7 @@ Vue.use(VueRouter);
 ];
 
 const router = new VueRouter({
+  base: '/~roaltm/kasutajaliidesed/prax3/',
   routes
 });
 

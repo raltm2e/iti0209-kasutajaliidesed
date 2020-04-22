@@ -16,10 +16,7 @@
                                         <label for="töö">Vali töö:</label>
                                         <select id="töö" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>Õlivahetus</option>
-                                            <option>Inspektsioon I</option>
-                                            <option>Inspektsioon II</option>
-                                            <option>Muu</option>
+                                            <option v-for="item in hooldustood" :key="item.too">{{item.too}}</option>
                                         </select>
                                     </div>
                                     <div class="form-row">
@@ -38,8 +35,8 @@
                                     </div>
                                     <div class="form-group">
                                         <div class='input-group date' id='datetimepicker1'>
-                                            <label for="aeg">Vali aeg:
-                                                <input id="aeg" type="datetime-local" class="form-control" />
+                                            <label>Vali aeg:
+                                                <datetime format="DD-MM-YYYY H:i" v-model="val"></datetime>
                                             </label>
                                             <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -78,8 +75,18 @@
 </template>
 
 <script>
+    import datetime from 'vuejs-datetimepicker';
+    import hooldustood from '../assets/json/hooldustood.json'
     export default {
-        name: "Hooldus"
+        name: "Hooldus",
+        data() {
+            return {
+                hooldustood: hooldustood
+            }
+        },
+        components: {
+            datetime
+        }
     }
 </script>
 
