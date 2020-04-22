@@ -16,17 +16,14 @@
                                         <label for="automark">Automark:</label>
                                         <select id="automark" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>BMW</option>
+                                            <option v-for="item in margid" :key="item.automark">{{item.automark}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="mudel">Mudel:</label>
                                         <select id="mudel" class="form-control">
                                             <option disabled selected>Vali...</option>
-                                            <option>1.-4. seeria</option>
-                                            <option>5.-7. seeria</option>
-                                            <option>X1-X7</option>
-                                            <option>M1-M8</option>
+                                            <option v-for="item in mudelid" :key="item.mudel">{{item.mudel}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -66,8 +63,16 @@
 </template>
 
 <script>
+    import margid from '../assets/json/automargid.json'
+    import mudelid from '../assets/json/mudelid.json'
     export default {
-        name: "Broneeri"
+        name: "Broneeri",
+        data(){
+            return{
+                margid: margid,
+                mudelid: mudelid
+            }
+        }
     }
 </script>
 

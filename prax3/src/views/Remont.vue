@@ -53,19 +53,21 @@
                                             <br>
                                             <input type="tel" id="telefoninumber">
                                         </label>
+                                        <div class="required"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Sisesta email:
                                             <br>
-                                            <input type="email" id="email">
+                                            <input type="email" id="email" required>
                                         </label>
+                                        <div class="required"></div>
                                     </div>
                                     <div class="form-row" style="width: 100%">
                                         <div class="form-group m-auto">
                                             <router-link to="/broneeri" class="btn btn-lg">Tagasi</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <router-link to="/edukas" class="btn btn-lg">Kinnita</router-link>
+                                            <router-link to="/edukas" class="btn btn-lg" onclick="validateLogin()" type="submit" value="Submit">Kinnita</router-link>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>
@@ -81,6 +83,26 @@
 <script>
     export default {
         name: "Remont"
+    }
+
+    function validateEmail(email) {
+        // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+        const emailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|("[^\s@]+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return emailformat.test(String(email).toLowerCase());
+    }
+
+    function validateLogin() {
+        const required = document.getElementsByClassName("required");
+        const email = document.getElementById("email").value;
+        const phoneNumber = document.getElementById("telefoninumber").value;
+        if (phoneNumber == "") {
+            required[0].innerHTML = "This field cannot be empty.";
+        }
+        if (email == "") {
+            required[1].innerHTML = "This field cannot be empty.";
+        } else if (!validateEmail(email)) {
+            required[1].innerHTML = "Invalid Email Format.";
+        }
     }
 </script>
 
