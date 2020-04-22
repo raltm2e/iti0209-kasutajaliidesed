@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6, a, p {
 
 .btn {
     background-color: #1762A7;
+    margin-right: 50%;
 }
 
 .fill, .container {
@@ -34,10 +35,6 @@ h1, h2, h3, h4, h5, h6, a, p {
     border-width: 0;
 }
 
-.btn {
-    margin-right: 50%;
-}
-
 .row {
     min-height:100%;
     position:relative;
@@ -46,7 +43,7 @@ h1, h2, h3, h4, h5, h6, a, p {
 .footer {
     position:absolute;
     background-color: #202027;
-    bottom: -200px;
+    bottom: -250px;
     left: 0;
     width: 100%;
 }

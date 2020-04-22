@@ -12,7 +12,7 @@
         </div>
         <div class="row mt-3">
             <div class="col">
-                <a href="index.html" class="btn btn-lg m-auto" role="button">Tagasi avalehele</a>
+                <router-link to="/" class="btn btn-lg m-auto" role="button">Tagasi avalehele</router-link>
             </div>
         </div>
         <div class="row mt-5">
