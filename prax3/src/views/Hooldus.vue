@@ -14,10 +14,11 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="töö">Vali töö:</label>
-                                        <select id="töö" class="form-control">
+                                        <select id="töö" class="form-control required-data">
                                             <option disabled selected>Vali...</option>
                                             <option v-for="item in hooldustood" :key="item.too">{{item.too}}</option>
                                         </select>
+                                        <div class="required required-broneeri"></div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group m-auto">
@@ -110,28 +111,44 @@
         }
     }
 
+    function validateData() {
+        clearRequiredFields();
+        const required = document.getElementsByClassName("required-broneeri");
+        const requiredData = document.getElementsByClassName("required-data");
+        let i;
+        let isCorrect = true;
+        for (i = 0; i < requiredData.length; i++) {
+            if (requiredData[i].options[requiredData[i].selectedIndex].value === "Vali...") {
+                required[i].innerHTML = "Tee valik!";
+                isCorrect = false;
+            }
+        }
+        return isCorrect;
+    }
+
     function validateLogin() {
         clearRequiredFields();
+        validateData();
         const required = document.getElementsByClassName("required");
         const email = document.getElementById("email").value;
         const phoneNumber = document.getElementById("telefoninumber").value;
         const date = document.getElementsByClassName("datepicker")[0];
         const time = document.getElementById("time");
         if (date.getElementsByTagName("input")[0].value === "") {
-            required[0].innerHTML = "Vali kuupäev!";
+            required[1].innerHTML = "Vali kuupäev!";
         }
         if (time.value === "") {
-            required[1].innerHTML = "Vali kellaaeg!";
+            required[2].innerHTML = "Vali kellaaeg!";
         }
         if (phoneNumber === "") {
-            required[2].innerHTML = "Telefoninumber ei saa olla tühi!";
+            required[3].innerHTML = "Telefoninumber ei saa olla tühi!";
         } else if (!validatePhoneNumber(phoneNumber)) {
-            required[2].innerHTML = "Vale telefoninumber!";
+            required[3].innerHTML = "Vale telefoninumber!";
         }
         if (email === "") {
-            required[3].innerHTML = "Email ei saa olla tühi!";
+            required[4].innerHTML = "Email ei saa olla tühi!";
         } else if (!validateEmail(email)) {
-            required[3].innerHTML = "Vale email!";
+            required[4].innerHTML = "Vale email!";
         }
         if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email) || time.value === "" || date.getElementsByTagName("input")[0].value === "") {
             return false;
