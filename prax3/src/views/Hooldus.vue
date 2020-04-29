@@ -36,13 +36,7 @@
                                     <div class="form-group">
                                         <div class='input-group date'>
                                             <label>Vali päev:</label>
-                                            <flat-pickr style="width: 100%"
-                                                        v-model="date"
-                                                        :config="config"
-                                                        class="form-control datepicker-broneeri"
-                                                        placeholder="Vali..."
-                                                        name="date">
-                                            </flat-pickr>
+                                            <datepicker v-model="date" class="datepicker"></datepicker>
                                             <div class="required required-kellaaeg"></div>
                                         </div>
                                     </div>
@@ -89,8 +83,7 @@
 <script>
     import hooldustood from '../assets/json/hooldustood.json'
     import router from '../router/index.ts';
-    import flatPickr from 'vue-flatpickr-component';
-    import 'flatpickr/dist/flatpickr.css';
+    import Datepicker from 'vuejs-datepicker';
     import VueTimepicker from 'vue2-timepicker';
     import 'vue2-timepicker/dist/VueTimepicker.css';
 
@@ -122,9 +115,9 @@
         const required = document.getElementsByClassName("required");
         const email = document.getElementById("email").value;
         const phoneNumber = document.getElementById("telefoninumber").value;
-        const date = document.getElementsByName("date")[0];
+        const date = document.getElementsByClassName("datepicker")[0];
         const time = document.getElementById("time");
-        if (date.value === "") {
+        if (date.getElementsByTagName("input")[0].value === "") {
             required[0].innerHTML = "Vali kuupäev!";
         }
         if (time.value === "") {
@@ -140,7 +133,7 @@
         } else if (!validateEmail(email)) {
             required[3].innerHTML = "Vale email!";
         }
-        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email) || time.value === "") {
+        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email) || time.value === "" || date.getElementsByTagName("input")[0].value === "") {
             return false;
         }
         return true;
@@ -166,7 +159,7 @@
             }
         },
         components: {
-            flatPickr,
+            Datepicker,
             VueTimepicker
         }
     }
