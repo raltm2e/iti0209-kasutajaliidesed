@@ -62,7 +62,7 @@
                                             <router-link to="/broneeri" class="btn btn-lg">Tagasi</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <button class="btn btn-lg" v-on:click="validateLogin" type="submit" value="Submit">Kinnita</button>
+                                            <button class="btn btn-lg" v-on:click="validateLogin">Kinnita</button>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>
@@ -77,11 +77,21 @@
 
 <script>
     import remonditood from '../assets/json/remonditood.json'
+    import router from '../router/index.ts';
 
     function validateEmail(email) {
         // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
         const emailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|("[^\s@]+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return emailformat.test(String(email).toLowerCase());
+    }
+
+    function validatePhoneNumber(phoneNumber) {
+        if (phoneNumber.length >= 7 && phoneNumber.length <= 8) {
+            if (!isNaN(phoneNumber) && phoneNumber[0] === 5) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function clearRequiredFields() {
@@ -98,13 +108,21 @@
         const email = document.getElementById("email").value;
         const phoneNumber = document.getElementById("telefoninumber").value;
         if (phoneNumber === "") {
-            required[0].innerHTML = "This field cannot be empty.";
+            required[0].innerHTML = "Telefoninumber ei saa olla tühi!";
+        } else if (!validatePhoneNumber(phoneNumber)) {
+            required[0].innerHTML = "Vale telefoninumber!";
         }
         if (email === "") {
-            required[1].innerHTML = "This field cannot be empty.";
+            required[1].innerHTML = "Email ei saa olla tühi!";
         } else if (!validateEmail(email)) {
-            required[1].innerHTML = "Invalid Email Format.";
+            required[1].innerHTML = "Vale email!";
         }
+        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email)) {
+            console.log("False");
+            return false;
+        }
+        console.log("True");
+        return true;
     }
 
     export default {
@@ -116,17 +134,8 @@
         },
         methods: {
             validateLogin: function () {
-                clearRequiredFields();
-                const required = document.getElementsByClassName("required");
-                const email = document.getElementById("email").value;
-                const phoneNumber = document.getElementById("telefoninumber").value;
-                if (phoneNumber === "") {
-                    required[0].innerHTML = "This field cannot be empty.";
-                }
-                if (email === "") {
-                    required[1].innerHTML = "This field cannot be empty.";
-                } else if (!validateEmail(email)) {
-                    required[1].innerHTML = "Invalid Email Format.";
+                if (validateLogin()) {
+                    router.push({ path: '/edukas' })
                 }
             }
         }

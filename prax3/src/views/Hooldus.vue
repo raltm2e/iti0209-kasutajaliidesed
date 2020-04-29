@@ -48,19 +48,21 @@
                                             <br>
                                             <input type="tel" id="telefoninumber">
                                         </label>
+                                        <div class="required"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Sisesta email:
                                             <br>
                                             <input type="email" id="email">
                                         </label>
+                                        <div class="required"></div>
                                     </div>
                                     <div class="form-row" style="width: 100%">
                                         <div class="form-group m-auto">
                                             <router-link to="/broneeri" class="btn btn-lg">Tagasi</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <router-link to="/edukas" class="btn btn-lg">Kinnita</router-link>
+                                            <button class="btn btn-lg" v-on:click="validateLogin">Kinnita</button>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>
@@ -77,11 +79,66 @@
 <script>
     import datetime from 'vuejs-datetimepicker';
     import hooldustood from '../assets/json/hooldustood.json'
+    import router from '../router/index.ts';
+
+    function validateEmail(email) {
+        // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+        const emailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|("[^\s@]+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return emailformat.test(String(email).toLowerCase());
+    }
+
+    function validatePhoneNumber(phoneNumber) {
+        if (phoneNumber.length >= 7 && phoneNumber.length <= 8) {
+            if (!isNaN(phoneNumber) && phoneNumber[0] === 5) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function clearRequiredFields() {
+        const required = document.getElementsByClassName("required");
+        let i = 0;
+        for (i = 0; i < required.length; i++) {
+            required[i].innerHTML = "";
+        }
+    }
+
+    function validateLogin() {
+        clearRequiredFields();
+        const required = document.getElementsByClassName("required");
+        const email = document.getElementById("email").value;
+        const phoneNumber = document.getElementById("telefoninumber").value;
+        if (phoneNumber === "") {
+            required[0].innerHTML = "Telefoninumber ei saa olla tühi!";
+        } else if (!validatePhoneNumber(phoneNumber)) {
+            required[0].innerHTML = "Vale telefoninumber!";
+        }
+        if (email === "") {
+            required[1].innerHTML = "Email ei saa olla tühi!";
+        } else if (!validateEmail(email)) {
+            required[1].innerHTML = "Vale email!";
+        }
+        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email)) {
+            console.log("False");
+            return false;
+        }
+        console.log("True");
+        return true;
+    }
+
     export default {
         name: "Hooldus",
         data() {
             return {
                 hooldustood: hooldustood
+            }
+        },
+        methods: {
+            validateLogin: function () {
+                if (validateLogin()) {
+                    router.push({ path: '/edukas' })
+                }
             }
         },
         components: {
