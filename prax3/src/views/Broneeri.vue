@@ -18,7 +18,7 @@
                                             <option disabled selected>Vali...</option>
                                             <option v-for="item in margid" :key="item.automark">{{item.automark}}</option>
                                         </select>
-                                        <div class="required-broneeri"></div>
+                                        <div class="required required-broneeri"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="mudel">Mudel:</label>
@@ -26,7 +26,7 @@
                                             <option disabled selected>Vali...</option>
                                             <option v-for="item in mudelid" :key="item.mudel">{{item.mudel}}</option>
                                         </select>
-                                        <div class="required-broneeri"></div>
+                                        <div class="required required-broneeri"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="mootor">Mootor:</label>
@@ -34,7 +34,7 @@
                                             <option disabled selected>Vali...</option>
                                             <option v-for="item in mootorid" :key="item.mootor">{{item.mootor}}</option>
                                         </select>
-                                        <div class="required-broneeri"></div>
+                                        <div class="required required-broneeri"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="käigukast">Käigukast:</label>
@@ -42,7 +42,7 @@
                                             <option disabled selected>Vali...</option>
                                             <option v-for="item in k2igukastid" :key="item.k2igukast">{{item.k2igukast}}</option>
                                         </select>
-                                        <div class="required-broneeri"></div>
+                                        <div class="required required-broneeri"></div>
                                     </div>
                                     <div class="form-row" style="width: 100%">
                                         <div class="form-group m-auto">

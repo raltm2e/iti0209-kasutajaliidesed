@@ -34,13 +34,23 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <label>Vali aeg:
-                                                <datetime format="DD-MM-YYYY H:i" v-model="val"></datetime>
-                                            </label>
-                                            <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
+                                        <div class='input-group date'>
+                                            <label>Vali päev:</label>
+                                            <flat-pickr style="width: 100%"
+                                                        v-model="date"
+                                                        :config="config"
+                                                        class="form-control datepicker-broneeri"
+                                                        placeholder="Vali..."
+                                                        name="date">
+                                            </flat-pickr>
+                                            <div class="required required-kellaaeg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class='input-group date' style="width: 100%">
+                                            <label>Vali kellaaeg:</label>
+                                            <vue-timepicker id="time" v-model="yourTimeValue" :hour-range="[[9, 16]]" :minute-interval="30" input-width="100%"></vue-timepicker>
+                                            <div class="required required-kellaaeg"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -77,9 +87,12 @@
 </template>
 
 <script>
-    import datetime from 'vuejs-datetimepicker';
     import hooldustood from '../assets/json/hooldustood.json'
     import router from '../router/index.ts';
+    import flatPickr from 'vue-flatpickr-component';
+    import 'flatpickr/dist/flatpickr.css';
+    import VueTimepicker from 'vue2-timepicker';
+    import 'vue2-timepicker/dist/VueTimepicker.css';
 
     function validateEmail(email) {
         // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
@@ -109,21 +122,27 @@
         const required = document.getElementsByClassName("required");
         const email = document.getElementById("email").value;
         const phoneNumber = document.getElementById("telefoninumber").value;
+        const date = document.getElementsByName("date")[0];
+        const time = document.getElementById("time");
+        if (date.value === "") {
+            required[0].innerHTML = "Vali kuupäev!";
+        }
+        if (time.value === "") {
+            required[1].innerHTML = "Vali kellaaeg!";
+        }
         if (phoneNumber === "") {
-            required[0].innerHTML = "Telefoninumber ei saa olla tühi!";
+            required[2].innerHTML = "Telefoninumber ei saa olla tühi!";
         } else if (!validatePhoneNumber(phoneNumber)) {
-            required[0].innerHTML = "Vale telefoninumber!";
+            required[2].innerHTML = "Vale telefoninumber!";
         }
         if (email === "") {
-            required[1].innerHTML = "Email ei saa olla tühi!";
+            required[3].innerHTML = "Email ei saa olla tühi!";
         } else if (!validateEmail(email)) {
-            required[1].innerHTML = "Vale email!";
+            required[3].innerHTML = "Vale email!";
         }
-        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email)) {
-            console.log("False");
+        if (phoneNumber === "" || !validatePhoneNumber(phoneNumber) || email === "" || !validateEmail(email) || time.value === "") {
             return false;
         }
-        console.log("True");
         return true;
     }
 
@@ -131,7 +150,12 @@
         name: "Hooldus",
         data() {
             return {
-                hooldustood: hooldustood
+                hooldustood: hooldustood,
+                date: null,
+                yourTimeValue: {
+                    HH: "09",
+                    mm: "00"
+                }
             }
         },
         methods: {
@@ -142,7 +166,8 @@
             }
         },
         components: {
-            datetime
+            flatPickr,
+            VueTimepicker
         }
     }
 </script>
