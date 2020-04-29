@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <label for="email">Sisesta email:
                                             <br>
-                                            <input type="email" id="email" required>
+                                            <input type="email" id="email">
                                         </label>
                                         <div class="required"></div>
                                     </div>
@@ -62,7 +62,7 @@
                                             <router-link to="/broneeri" class="btn btn-lg">Tagasi</router-link>
                                         </div>
                                         <div class="form-group m-auto">
-                                            <router-link to="/edukas" class="btn btn-lg" onclick="validateLogin()" type="submit" value="Submit">Kinnita</router-link>
+                                            <button class="btn btn-lg" v-on:click="validateLogin" type="submit" value="Submit">Kinnita</button>
                                         </div>
                                     </div> <!-- form-group// -->
                                 </form>
@@ -77,14 +77,6 @@
 
 <script>
     import remonditood from '../assets/json/remonditood.json'
-    export default {
-        name: "Remont",
-        data(){
-            return {
-                remonditood: remonditood
-            }
-        }
-    }
 
     function validateEmail(email) {
         // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
@@ -92,17 +84,51 @@
         return emailformat.test(String(email).toLowerCase());
     }
 
+    function clearRequiredFields() {
+        const required = document.getElementsByClassName("required");
+        let i = 0;
+        for (i = 0; i < required.length; i++) {
+            required[i].innerHTML = "";
+        }
+    }
+
     function validateLogin() {
+        clearRequiredFields();
         const required = document.getElementsByClassName("required");
         const email = document.getElementById("email").value;
         const phoneNumber = document.getElementById("telefoninumber").value;
-        if (phoneNumber == "") {
+        if (phoneNumber === "") {
             required[0].innerHTML = "This field cannot be empty.";
         }
-        if (email == "") {
+        if (email === "") {
             required[1].innerHTML = "This field cannot be empty.";
         } else if (!validateEmail(email)) {
             required[1].innerHTML = "Invalid Email Format.";
+        }
+    }
+
+    export default {
+        name: "Remont",
+        data(){
+            return {
+                remonditood: remonditood
+            }
+        },
+        methods: {
+            validateLogin: function () {
+                clearRequiredFields();
+                const required = document.getElementsByClassName("required");
+                const email = document.getElementById("email").value;
+                const phoneNumber = document.getElementById("telefoninumber").value;
+                if (phoneNumber === "") {
+                    required[0].innerHTML = "This field cannot be empty.";
+                }
+                if (email === "") {
+                    required[1].innerHTML = "This field cannot be empty.";
+                } else if (!validateEmail(email)) {
+                    required[1].innerHTML = "Invalid Email Format.";
+                }
+            }
         }
     }
 </script>
