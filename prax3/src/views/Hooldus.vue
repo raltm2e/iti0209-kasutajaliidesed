@@ -96,7 +96,7 @@
 
     function validatePhoneNumber(phoneNumber) {
         if (phoneNumber.length >= 7 && phoneNumber.length <= 8) {
-            if (!isNaN(phoneNumber) && phoneNumber[0] === 5) {
+            if (!isNaN(phoneNumber) && phoneNumber[0] == 5) {
                 return true;
             }
         }
