@@ -15,6 +15,10 @@
 <script>
   import Navbar from "@/components/Navbar";
   import Footer from "@/components/Footer";
+  // import Echarts from 'vue-echarts';
+  // import 'echarts/lib/chart/bar';
+
+  // Vue.component('chart', Echarts);
 
   export default {
     components: {Footer, Navbar},

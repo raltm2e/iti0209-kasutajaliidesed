@@ -7,6 +7,7 @@ import Hooldus from '../views/Hooldus.vue'
 import Edukas from '../views/Edukas.vue'
 import Hinnakiri from '../views/Hinnakiri.vue'
 import Eesm2rk from '../views/Eesm2rk.vue'
+import Graafikud from '../views/Graafikud.vue'
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ Vue.use(VueRouter);
     path: '/eesm2rk',
     name: 'Eesm2rk',
     component: Eesm2rk
+  },
+  {
+    path: '/graafikud',
+    name: 'Graafikud',
+    component: Graafikud
   }
 ];
 

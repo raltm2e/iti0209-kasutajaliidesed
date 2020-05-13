@@ -10,6 +10,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <router-link to="/graafikud" class="nav-link">Andmed</router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link to="/hinnakiri" class="nav-link">Hinnakiri</router-link>>
                     </li>
                     <li class="nav-item">
