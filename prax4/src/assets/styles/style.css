@@ -70,3 +70,20 @@ h1, h2, h3, h4, h5, h6, a, p, button {
 .required-kellaaeg {
     margin-top: 0;
 }
+
+.chart_info {
+    margin-top: 0.5%;
+    text-align: center;
+}
+
+.chart_link {
+    margin-top: 0.5%;
+}
+
+.graph-row {
+    margin-top: 2%;
+}
+
+.link_div {
+    text-align: center;
+}
