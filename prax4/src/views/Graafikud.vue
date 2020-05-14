@@ -13,7 +13,6 @@
             </div>
         </div>
 
-
         <div class="row graph-row">
             <div class="col-6">
                 <h5 class="chart_info">BMW 3. seeria tootmismahud põlvkonna kaupa, tuhandetes</h5>
@@ -32,7 +31,7 @@
         </div>
         <div class="row graph-row">
             <div class="col-6">
-                <h5 class="chart_info">Autotootjate turuosa 2019. aastal, %</h5>
+                <h5 class="chart_info">Autotootjate turuosa 2019. aastal</h5>
                 <v-chart :options="thirdGraph" class="echarts"/>
                 <div class="link_div">
                     <a href="https://focus2move.com/world-car-group-ranking/" class="chart_link">Viide</a>
@@ -51,8 +50,8 @@
 
 <style scoped>
     .echarts {
-        width: 450px;
-        height: 250px;
+        /*width: 480px;*/
+        /*height: 350px;*/
         background-color: beige;
         margin: auto;
     }
@@ -75,7 +74,6 @@
             'v-chart': ECharts
         },
         data: function () {
-
             return {
                 firstGraph: {
                     xAxis: {
@@ -105,23 +103,20 @@
                     }]
                 },
                 thirdGraph: {
+                    grid: {
+                        right: 100,
+                        left: 20,
+                        containLabel: true
+                    },
+                    xAxis: {name: 'turuosa, %'},
+                    yAxis: {
+                        type: 'category',
+                        data: marketJson.firmad
+                    },
                     series: [
                         {
-                            type: 'pie',
-                            radius: '75%',
-                            center: ['50%', '50%'],
-                            data: [
-                                {value: marketJson.Volkswagen, name: 'Volkswagen'},
-                                {value: marketJson.Toyota, name: 'Toyota'},
-                                {value: marketJson.Renault, name: 'Renault'},
-                                {value: marketJson.GM, name: 'GM'},
-                                {value: marketJson.Hyundai, name: 'Hyundai'},
-                                {value: marketJson.Ford, name: 'Ford'},
-                                {value: marketJson.Honda, name: 'Honda'},
-                                {value: marketJson.Muu, name: 'Muu'}
-                            ].sort(function (a, b) { return a.value - b.value; }),
-                            animationType: 'scale',
-                            animationEasing: 'elasticOut'
+                            type: 'bar',
+                            data: marketJson.turuosad,
                         }
                     ]
                 },

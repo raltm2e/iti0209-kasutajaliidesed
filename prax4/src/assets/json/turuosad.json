@@ -1,4 +1,6 @@
 {
+  "firmad": ["Volkswagen", "Toyota", "Renault", "GM", "Hyundai", "Ford", "Honda"],
+  "turuosad": [12.2, 11.4, 10.8, 9.1, 8.5, 5.8, 5.7],
   "Volkswagen": 12.2,
   "Toyota": 11.4,
   "Renault": 10.8,

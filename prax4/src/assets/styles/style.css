@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6, a, p, button {
 .footer {
     position:absolute;
     background-color: #202027;
-    bottom: -250px;
+    bottom: -800px;
     left: 0;
     width: 100%;
 }
